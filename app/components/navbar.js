@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import diamond from '../../public/images/diamond.png'
+import {usePathname} from 'next/navigation'
 import {
   InstapaperShareButton,
   InstapaperIcon,
@@ -16,10 +17,12 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from 'next-share'
+import next from 'next'
 
 
 
 export default function Navbar() {
+  const currentRoute = usePathname();
   return (
     <div className='flex  h-20 mx-1 items-center justify-center navBgColor'>
         <div className='flex-1'>
@@ -37,10 +40,10 @@ export default function Navbar() {
 
         </div>
         <div className='flex-1'>
-            <Link href="/" className='padNav font-medium text-l text-center'>HOME</Link>
-            <Link href="/about" className='padNav font-medium text-l text-center'>ABOUT</Link>
-            <Link href="/our-products" className='padNav font-medium text-l text-center'>OUR-PRODUCTS</Link>
-            <Link href="/contact" className='padNav font-medium text-l text-center'>CONTACT</Link>
+            <Link href="/" className={`${currentRoute === '/' ? 'padNav' : ""} font-medium text-l text-center mr-5`}>HOME</Link>
+            <Link href={"/about"} className={`${currentRoute === '/about' ? 'padNav' : ""} font-medium text-l mr-5 text-center`}>ABOUT</Link>
+            <Link href="/our-products" className={`${currentRoute === '/our-products' ? 'padNav' : ""} font-medium mr-5 text-l text-center`}>OUR-PRODUCTS</Link>
+            <Link href="/contact" className={`${currentRoute === '/contact' ? 'padNav' : ""} font-medium text-l mr-5 text-center`}>CONTACT</Link>
         </div>
         <div className='flex justify-end items-center mr-10'>
             <p className='padFollow font-semibold  text-l text-center bg-white rounded-full pt-1 pl-3 pb-1 pr-3'>FOLLOW US</p>           
